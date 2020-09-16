@@ -1,0 +1,2 @@
+# The csv files are large and won't change. Ignore these files.
+*.csv
