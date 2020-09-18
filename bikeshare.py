@@ -29,7 +29,7 @@ def get_filters():
         print("{} is an invalid entry. Please enter one of 'chicago', 'new york city' or 'washington'.".format(city))
         city = input("Please enter the name of the city you'd like to analyse (chicago, new york city, washington): \n").lower()
     print("You are analysing {} for this request.".format(city).title())
-             
+
     # TO DO: get user input for month (all, january, february, ... , june)
     months = ['all','january','february','march','april','may','june']
     month = input("Please enter the month you'd like to analyse (all, january, february, march, april, may, june): \n").lower()
@@ -70,7 +70,7 @@ def load_data(city, month, day):
 
     # extract month and day of week from Start Time to create new columns
     df['month'] = df['Start Time'].dt.month
-    df['day_of_week'] = df['Start Time'].dt.day_name() #Changed to dt.weekday_name() in main submission to avoid error 
+    df['day_of_week'] = df['Start Time'].dt.day_name() #Changed to dt.weekday_name() in main submission to avoid error
 
 
     # filter by month if applicable
@@ -86,7 +86,7 @@ def load_data(city, month, day):
     if day != 'all':
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
-    
+
     # Check output and export to csv only when validating answers
     #df.to_csv("first_output.csv")
     #print(df.head(5))
@@ -153,7 +153,7 @@ def trip_duration_stats(df):
     print("The total travel time during the period selected is approx.: " + str(df['Trip Duration'].sum()//3600) + " hours and " + str(int((df['Trip Duration'].sum()%3600)/60)) + " minutes.")
 
     # TO DO: display mean travel time
-    print("The mean travel time during the period selected is: " + str(int(df['Trip Duration'].mean()//60)) + " minutes.")
+    print("The mean travel time during the period selected is: {} minutes".format(str(int(df['Trip Duration'].mean()//60))))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -171,13 +171,13 @@ def user_stats(df):
 
 
     #Check whether column names exist for user stats, and run stats if so, warning message if not.
-    if 'Gender' in df:    
+    if 'Gender' in df:
     # TO DO: Display counts of gender
         print("\nThe Genders in this selection are shown below:\n")
         print(df['Gender'].value_counts(dropna=False))
     else:
         print("No Gender variable in dataset. Stats cannot be returned.")
-        
+
     #Check whether column names exist for user stats, and run stats if so, warning message if not.
     if 'Birth Year' in df:
     # TO DO: Display earliest, most recent, and most common year of birth
@@ -189,7 +189,7 @@ def user_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 def first_five(df):
     #Add code to give user option of viewing first 5 lines of output. If not, leave function
         sample_answer = ['yes','no']
