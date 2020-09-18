@@ -13,4 +13,4 @@ new_york_city.csv
 washington.csv
 
 ### Credits
-At time of writing, there are no credits to add.
+Credits are due to Udacity for being wonderful teachers at Python and Github!
